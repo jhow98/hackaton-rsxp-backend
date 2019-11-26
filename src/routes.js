@@ -20,11 +20,11 @@ routes.put('/users/:user_id', UserController.update);
 // routes.delete('/events/:event_id', EventController.destroy); 
 // routes.put('/events/:event_id', EventController.update); 
 
-routes.get('/groups/:group_id', GroupController.index); 
-routes.post('/groups/avaliable', GroupController.match_groups); 
-routes.post('/groups', GroupController.store); 
-routes.delete('/groups/:group_id', GroupController.destroy); 
-routes.put('/groups/:group_id', GroupController.update); 
+// routes.get('/groups/:group_id', GroupController.index); 
+// routes.post('/groups/avaliable', GroupController.match_groups); 
+// routes.post('/groups', GroupController.store); 
+// routes.delete('/groups/:group_id', GroupController.destroy); 
+// routes.put('/groups/:group_id', GroupController.update); 
 
 // routes.get('/dashboard', DashboardController.show); 
 

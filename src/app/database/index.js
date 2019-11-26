@@ -1,15 +1,6 @@
 import mongoose from 'mongoose';
 
-class Database {
-  constructor() {
-    this.mongo();
-  }
-
-  mongo() {
-    this.mongoConnection = mongoose.connect(process.env.MONGO_URL, {
-      useNewUrlParser: true,
-      useFindAndModify: true,
-    });
-  }
-}
-export default new Database();
+mongoose.connect(process.env.MONGO_URL || 'mongodb//mongodb://127.0.0.1:27017/mongodb', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+})
