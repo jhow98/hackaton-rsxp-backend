@@ -1,10 +1,11 @@
-const restful = require('node-restful')
 const mongoose = require('mongoose');
 
-const UserSchema = new mongoose.Schema({
+const GroupSchema = new mongoose.Schema({
+    themes: {type: String, required: true},
     description: { type: String, required: true },
     validate: { type: Date, required: true },
-    level_dificult: {type: Number, require: true}
+    level_dificult: {type: Number, require: true},
+    id_user: {type: Number, required: true}
 });
 
-module.exports = mongoose.model('User', UserSchema);
+export default mongoose.model('Group', GroupSchema);
