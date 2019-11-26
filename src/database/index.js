@@ -1,12 +1,13 @@
+
 import mongoose from 'mongoose';
 
 class Database {
   constructor() {
-    this.mongo();
+    this.init();
   }
 
-  mongo() {
-    this.mongoConnection = mongoose.connect(process.env.MONGO_URL, {
+  init() {
+    this.mongoConnection = mongoose.connect("mongodb://localhost:27017/ittome", {
       useNewUrlParser: true,
       useFindAndModify: true,
     });
