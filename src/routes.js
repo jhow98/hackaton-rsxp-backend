@@ -8,20 +8,20 @@ import UserController from '../src/app/controllers/UserController'
 
 const routes = express.Router();
 
-// routes.get('/events', EventController.index); 
-// routes.post('/events/:user_id', EventController.store); 
-// routes.delete('/events', EventController.destroy); 
-// routes.put('/events', EventController.update); 
-
-// routes.get('/group', GroupController.index); 
-// routes.post('/group/', GroupController.store); 
-// routes.delete('/group', GroupController.destroy); 
-// routes.put('/group', GroupController.update); 
-
-routes.get('/users', UserController.index); 
+routes.get('/users/:user_id', UserController.index); 
 routes.post('/users/', UserController.store); 
-routes.delete('/users', UserController.destoy); 
-routes.put('/users', UserController.update);  
+routes.delete('/users/:user_id', UserController.destoy); 
+routes.put('/users/:user_id', UserController.update);  
+
+// routes.get('/events', EventController.index); 
+// routes.post('/events/:event_id', EventController.store); 
+// routes.delete('/events/:event_id', EventController.destroy); 
+// routes.put('/events/:event_id', EventController.update); 
+
+// routes.get('/group/:group_id', GroupController.index); 
+// routes.post('/group', GroupController.store); 
+// routes.delete('/group/:group_id', GroupController.destroy); 
+// routes.put('/group/:group_id', GroupController.update); 
 
 // routes.get('/dashboard', DashboardController.show); 
 
