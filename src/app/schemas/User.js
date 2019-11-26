@@ -5,7 +5,7 @@ const UserSchema = new mongoose.Schema({
   interest: { type: String, required: true },
   skis: { type: String, required: true },
   email: { type: String, required: true },
-  hash_password: { type: String, required: true },
+  password: { type: String, required: true },
   xp: { type: Number, default: 0 },
   is_senior: { type: Boolean, default: false },
 });

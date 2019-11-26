@@ -1,4 +1,5 @@
 import Group from '../schemas/Group';
+import User from '../schemas/User';
 
 module.exports = {
     async store(req, res){
@@ -14,8 +15,10 @@ module.exports = {
      },
 
      async show(req, res){
-        const { group_id } = req.body;
-        let group = await Group.findOne({group_id})
+        const { group_id, user_id } = req.body;
+
+        let user = await User.findById({user_id})
+        let group = await Group.findById({group_id})        
 
         if(group.lenght < 0){
             return res.status(404).json({error: 'Group does not exists!'})            
@@ -25,9 +28,12 @@ module.exports = {
      },
 
      async match_groups(req, res){
-        const { user_id, latitude, longitude } = req.body;
+
+        const { user_id } = req.body;
         
+
         let group = await Group.findOne({group_id})
+        let user = await User.findOne({group_id})
 
         if(group.lenght < 0){
             return res.status(404).json({error: 'Group does not exists!'})            
