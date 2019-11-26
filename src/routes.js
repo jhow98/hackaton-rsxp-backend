@@ -1,14 +1,16 @@
 import express from 'express';
 
+import DashboardController from '../src/app/controllers/DashboardController'
 import UserController from '../src/app/controllers/UserController'
-//import DashboardController from '../src/app/controllers/DashboardController'
 //import EventController from '../src/app/controllers/EventController'
 //import DashboardController from '../src/app/controllers/DashboardController'
 
 
 const routes = express.Router();
 
-routes.get('/users/:user_id', UserController.index); 
+routes.get('/', DashboardController.show); 
+
+routes.get('/users/:user_id', UserController.show); 
 routes.post('/users/', UserController.store); 
 routes.delete('/users/:user_id', UserController.destoy); 
 routes.put('/users/:user_id', UserController.update);  
@@ -25,4 +27,4 @@ routes.put('/users/:user_id', UserController.update);
 
 // routes.get('/dashboard', DashboardController.show); 
 
-module.exports = routes;
+export default routes;
