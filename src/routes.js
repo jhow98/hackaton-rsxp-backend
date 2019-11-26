@@ -2,6 +2,7 @@ import express from 'express';
 
 import DashboardController from '../src/app/controllers/DashboardController'
 import UserController from '../src/app/controllers/UserController'
+import GroupController from '../src/app/controllers/GroupController'
 //import EventController from '../src/app/controllers/EventController'
 //import DashboardController from '../src/app/controllers/DashboardController'
 
@@ -19,10 +20,11 @@ routes.put('/users/:user_id', UserController.update);
 // routes.delete('/events/:event_id', EventController.destroy); 
 // routes.put('/events/:event_id', EventController.update); 
 
-// routes.get('/group/:group_id', GroupController.index); 
-// routes.post('/group', GroupController.store); 
-// routes.delete('/group/:group_id', GroupController.destroy); 
-// routes.put('/group/:group_id', GroupController.update); 
+routes.get('/groups/:group_id', GroupController.index); 
+routes.get('/groups/avaliable', GroupController.match_groups); 
+routes.post('/groups', GroupController.store); 
+routes.delete('/groups/:group_id', GroupController.destroy); 
+routes.put('/groups/:group_id', GroupController.update); 
 
 // routes.get('/dashboard', DashboardController.show); 
 

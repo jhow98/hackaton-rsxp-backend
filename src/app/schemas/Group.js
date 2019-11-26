@@ -7,7 +7,7 @@ const GroupSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "User"
 },
-  members: { type: Object, required: true}
+  members: { type: Object},
 });
 
 export default mongoose.model('Group', GroupSchema);
