@@ -1,7 +1,7 @@
-const User = require('../schemas/User')
+import User from '../schemas/User'
 //index, show, store, update, destroy
 
-module.exports = {
+class UserController {
     async store(req, res){
        const { mail, name } = req.body;
 
@@ -13,3 +13,5 @@ module.exports = {
        return res.json(user);
     }
 }
+
+export default UserController
