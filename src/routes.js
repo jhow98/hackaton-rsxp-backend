@@ -2,7 +2,7 @@ import express from 'express';
 
 import DashboardController from '../src/app/controllers/DashboardController'
 import UserController from '../src/app/controllers/UserController'
-//import GroupController from '../src/app/controllers/GroupController'
+import GroupController from '../src/app/controllers/GroupController'
 //import EventController from '../src/app/controllers/EventController'
 //import DashboardController from '../src/app/controllers/DashboardController'
 
@@ -10,7 +10,7 @@ const routes = express.Router();
 
 routes.get('/', DashboardController.show);
 
-//routes.get('/users/:user_id', UserController.show);
+routes.get('/users/:user_id', UserController.show);
 routes.post('/users', UserController.store);
 // routes.delete('/users/:user_id', UserController.destoy);
 // routes.put('/users/:user_id', UserController.update);
@@ -22,7 +22,7 @@ routes.post('/users', UserController.store);
 
 // routes.get('/groups/:group_id', GroupController.index);
 // routes.post('/groups/avaliable', GroupController.match_groups);
-// routes.post('/groups', GroupController.store);
+routes.post('/groups', GroupController.store);
 // routes.delete('/groups/:group_id', GroupController.destroy);
 // routes.put('/groups/:group_id', GroupController.update);
 
