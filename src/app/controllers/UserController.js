@@ -1,15 +1,16 @@
 const User = require('../schemas/User')
-//index, show, store, update, destroy
 
 module.exports = {
     async store(req, res){
-       const { mail, name } = req.body;
+       const { email, name, password } = req.body;
 
        let user = await User.findOne({email})
 
-       if(!user){
-        user = await User.create({ email });
+       if(user.lenght > 0){
+        return res.status(400).json({error: 'User already exists!'})
+      }else{
+        user = await User.create({ email, name, password });
       }
-       return res.json(user);
+      return res.status(200).json(user)
     }
 }
