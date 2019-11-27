@@ -8,6 +8,7 @@ const GroupSchema = new mongoose.Schema({
     ref: 'User',
   },
   members: { type: Object, required: true },
+  location: { type: Object, required: true },
 });
 
 export default mongoose.model('Group', GroupSchema);

@@ -8,7 +8,7 @@ module.exports = {
 
         const group = await Group.create({
             name: name,
-            interests: interests.split(',').map(tech => tech.trim()),
+            interests,
             admin_id: user_id
         })
         return res.status(201).json(group)
@@ -30,15 +30,33 @@ module.exports = {
 
      async match_groups(req, res){
 
-        const { user_id } = req.body;
+        const { user_id, location  } = req.body;
 
-        let user = await User.findById({user_id})        
+        var miles = 18;
+        var location = [
+            7.0398232,
+            4.8492161
+        ];
 
-        let group = await Group.find
+        const test = Group.find({
+            'adress.location': {
+                $geoWithin: {
+                    $centerSphere: [
+                        location,
+                        miles / 3963.2
+                    ]
+                }
+            }
+        })
+
+        return res.json(test)
+
+        let user = await User.findById({user_id}) 
+        const interests = user.interests
+        let group = await Group.findById({_id})    
+        
 
         
-        One({group_id})
-
         if(group.lenght < 0){
             return res.status(404).json({error: 'Group does not exists!'})            
         }else{
@@ -55,7 +73,7 @@ if(mongoose.Types.ObjectId.isValid(group_id)) {
     Group.findByIdAndUpdate(group_id,{$set:{
         members: members.split(',').map(member => tech.trim()),
     }},{new:true})
-    .then((docs)=>{
+    .then((docs)=>{ 
        if(docs) {
         return res.status(202).json({error: 'Group updated'})
        } else {
@@ -66,7 +84,6 @@ if(mongoose.Types.ObjectId.isValid(group_id)) {
     } else {
       return res.status(400).json({error: 'Provide correct key'}, docs)
     }
-
     },
 
 

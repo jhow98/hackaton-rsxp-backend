@@ -2,14 +2,14 @@ import User from '../schemas/User';
 
 module.exports = {
     async store(req, res){
-        const { email, name, password, interests } = req.body;
+        const { email } = req.body;
 
         let user = await User.findOne({email})
 
         if(user){
          return res.status(302).json({error: 'User already exists!'})
         }else{
-            user = await User.create({ email, name, password, interests });
+            user = await User.create(req.body);
         }
         return res.status(201).json(user)
      },
