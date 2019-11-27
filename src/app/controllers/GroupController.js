@@ -3,14 +3,15 @@ import User from '../schemas/User';
 
 class GroupController {
   async store(req, res) {
-    const { name, members, user_id, location, thema } = req.body;
+    const { name, members, user_id, location, subject, interests } = req.body;
 
     const group = await new Group({
       name,
       admin_id: user_id,
       members,
       location,
-      thema,
+      subject,
+      interests
     });
     group.save(err => {
       if (err) return res.status(500).json(err);

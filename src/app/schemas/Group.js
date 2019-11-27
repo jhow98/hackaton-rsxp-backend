@@ -8,8 +8,8 @@ const GroupSchema = new mongoose.Schema({
     required: true,
   },
   members: { type: Object, required: true },
-  location: { type: Object, required: true },
-  thema: { type: Object, required: true },
+  interests: { type: Object, required: true },
+  subject: { type: String, required: true },
 });
 
 export default mongoose.model('Group', GroupSchema);
