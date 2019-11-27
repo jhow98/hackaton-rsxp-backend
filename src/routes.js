@@ -12,7 +12,7 @@ routes.get('/', DashboardController.show);
 
 routes.get('/users/:user_id', UserController.show);
 routes.post('/users', UserController.store);
-routes.delete('/users', UserController.destoy);
+routes.delete('/users', UserController.destroy);
 // routes.put('/users/:user_id', UserController.update);
 
 //routes.get('/events', EventController.index);
@@ -24,7 +24,7 @@ routes.get('/groups/:group_id', GroupController.show);
 //routes.post('/groups/avaliable', GroupController.match_groups);
 routes.post('/groups', GroupController.store);
 routes.delete('/groups', GroupController.destroy);
-// routes.put('/groups/:group_id', GroupController.update);
+routes.put('/groups', GroupController.update);
 
 // routes.get('/dashboard', DashboardController.show);
 

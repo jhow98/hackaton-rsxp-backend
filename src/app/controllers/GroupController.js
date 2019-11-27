@@ -65,21 +65,17 @@ module.exports = {
 
 // @todo: validar se a lista de usuarios nao esta no gurupo
 
-if(mongoose.Types.ObjectId.isValid(group_id)) {
-    Group.findByIdAndUpdate(group_id,{$set:{
-        members: members.split(',').map(member => tech.trim()),
-    }},{new:true})
-    .then((docs)=>{ 
-       if(docs) {
-        return res.status(202).json({error: 'Group updated'})
-       } else {
-        return res.status(404).json({error: 'No such group exist', docs})
-       }
-    }).catch((err)=>{
-        return res.status(400).json(err)})
-    } else {
-      return res.status(400).json({error: 'Provide correct key'}, docs)
-    }
+            Group.findByIdAndUpdate(group_id,{$set:{
+                members
+            }},{new:true})
+            .then((docs)=>{ 
+            if(docs) {
+                return res.status(202).json({error: 'Group updated'})
+            } else {
+                return res.status(404).json({error: 'No such group exist', docs})
+            }
+            }).catch((err)=>{
+                return res.status(400).json(err)})
     },
 
     async destroy(req, res){
