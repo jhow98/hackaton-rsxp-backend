@@ -15,9 +15,9 @@ routes.post('/users', UserController.store);
 routes.delete('/users', UserController.destroy);
 // routes.put('/users/:user_id', UserController.update);
 
-// routes.get('/events', EventController.index);
+routes.get('/events/:event_id', EventController.show);
 routes.post('/events', EventController.store);
-// routes.delete('/events/:event_id', EventController.destroy);
+routes.delete('/events', EventController.destroy);
 // routes.put('/events/:event_id', EventController.update);
 
 routes.get('/groups/:group_id', GroupController.show);
