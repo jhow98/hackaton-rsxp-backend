@@ -12,7 +12,7 @@ routes.get('/', DashboardController.show);
 
 routes.get('/users/:user_id', UserController.show);
 routes.post('/users', UserController.store);
-// routes.delete('/users/:user_id', UserController.destoy);
+routes.delete('/users', UserController.destoy);
 // routes.put('/users/:user_id', UserController.update);
 
 // routes.get('/events', EventController.index);

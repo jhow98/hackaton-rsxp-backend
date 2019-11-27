@@ -25,13 +25,17 @@ module.exports = {
             return res.status(200).json(user)
            }
      },
+     
      async update(req, res){
 
 
 
     },
     async destoy(req, res){
-
+        User.findByIdAndRemove(req.params.user_id, (err, user) => {
+            if (err) return res.status(500).send(err);
+            return res.status(200).json("User successfully deleted!");
+        });
     }
 
 }

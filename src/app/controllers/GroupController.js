@@ -86,10 +86,11 @@ if(mongoose.Types.ObjectId.isValid(group_id)) {
     }
     },
 
-
-
     async destoy(req, res){
-
+        Group.findByIdAndRemove(req.params.group_id, (err, user) => {
+            if (err) return res.status(500).send(err);
+            return res.status(200).json("Group successfully deleted!");
+        });
     }
 
 }
