@@ -11,9 +11,10 @@ class EventController {
       local,
       tags,
       description,
+      location
     } = req.body;
 
-    const { user_id } = req.params;
+    const { user_id } = req.body;
 
     const event = await new Event({
       name,
@@ -23,6 +24,7 @@ class EventController {
       local,
       tags,
       description,
+      location
     });
     event.save(err => {
       if (err) return res.status(500).json(err);

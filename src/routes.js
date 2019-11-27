@@ -16,7 +16,7 @@ routes.delete('/users', UserController.destroy);
 // routes.put('/users/:user_id', UserController.update);
 
 // routes.get('/events', EventController.index);
-routes.post('/events/:user_id', EventController.store);
+routes.post('/events', EventController.store);
 // routes.delete('/events/:event_id', EventController.destroy);
 // routes.put('/events/:event_id', EventController.update);
 
