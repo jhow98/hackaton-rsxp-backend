@@ -3,8 +3,7 @@ import User from '../schemas/User';
 
 module.exports = {
     async store(req, res){
-        const { name, interests } = req.body
-        const  user_id = req.headers
+        const { name, interests, user_id } = req.body
 
         const group = await Group.create({
             name: name,
@@ -15,17 +14,10 @@ module.exports = {
      },
 
      async show(req, res){
-        const { group_id } = req.body;
-        //@todo verificar se é membro ou admin
-        
-        let group = await Group.findById({group_id})
-        
-
-        if(group.lenght < 0){
-            return res.status(404).json({error: 'Group does not exists!'})            
-        }else{
-            return res.json(200).json(group)
-        }
+        Group.findById(req.params.goup_id, (err, group) => {
+            if (err) return res.status(500).json(err)
+            return res.status(200).json(group)
+        });
      },
 
      async match_groups(req, res){
@@ -67,7 +59,7 @@ module.exports = {
      async update(req, res){
         const { group_id, members } = req.body
 
-//validar se a lista de usuarios nao esta no gurupo
+// @todo: validar se a lista de usuarios nao esta no gurupo
 
 if(mongoose.Types.ObjectId.isValid(group_id)) {
     Group.findByIdAndUpdate(group_id,{$set:{

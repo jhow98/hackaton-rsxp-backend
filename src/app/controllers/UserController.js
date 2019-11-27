@@ -15,22 +15,16 @@ module.exports = {
      },
 
      async show(req, res){
-        const  {user_id}  = req.params;
-
-        const user = await User.findById(user_id)
-
-        if(!user){
-            return res.status(404).json({error: 'User does not exists!'})
-           }else{
-            return res.status(200).json(user)
-           }
+        User.findById(req.params.user_id, (err, user) => {
+            if (err) return res.status(500).send(err)
+            return res.status(200).send(user)
+        });
      },
-     
+
      async update(req, res){
-
-
-
+         
     },
+
     async destoy(req, res){
         User.findByIdAndRemove(req.params.user_id, (err, user) => {
             if (err) return res.status(500).send(err);
