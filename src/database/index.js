@@ -1,4 +1,3 @@
-
 import mongoose from 'mongoose';
 
 class Database {
@@ -7,10 +6,13 @@ class Database {
   }
 
   init() {
-    this.mongoConnection = mongoose.connect("mongodb://localhost:27017/ittome", {
-      useNewUrlParser: true,
-      useFindAndModify: true,
-    });
+    this.mongoConnection = mongoose.connect(
+      'mongodb://localhost:27017/ittome',
+      {
+        useNewUrlParser: true,
+        useFindAndModify: true,
+      }
+    );
   }
 }
 export default new Database();

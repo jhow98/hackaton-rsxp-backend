@@ -5,9 +5,11 @@ const GroupSchema = new mongoose.Schema({
   admin_id: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
+    required: true,
   },
   members: { type: Object, required: true },
   location: { type: Object, required: true },
+  thema: { type: Object, required: true },
 });
 
 export default mongoose.model('Group', GroupSchema);
