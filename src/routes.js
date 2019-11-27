@@ -15,15 +15,15 @@ routes.post('/users', UserController.store);
 routes.delete('/users', UserController.destoy);
 // routes.put('/users/:user_id', UserController.update);
 
-// routes.get('/events', EventController.index);
+//routes.get('/events', EventController.index);
 // routes.post('/events/:event_id', EventController.store);
 // routes.delete('/events/:event_id', EventController.destroy);
 // routes.put('/events/:event_id', EventController.update);
 
-// routes.get('/groups/:group_id', GroupController.index);
-// routes.post('/groups/avaliable', GroupController.match_groups);
+routes.get('/groups/:group_id', GroupController.show);
+//routes.post('/groups/avaliable', GroupController.match_groups);
 routes.post('/groups', GroupController.store);
-// routes.delete('/groups/:group_id', GroupController.destroy);
+routes.delete('/groups', GroupController.destroy);
 // routes.put('/groups/:group_id', GroupController.update);
 
 // routes.get('/dashboard', DashboardController.show);

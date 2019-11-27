@@ -3,12 +3,13 @@ import User from '../schemas/User';
 
 module.exports = {
     async store(req, res){
-        const { name, interests, user_id } = req.body
+        const { name, members, user_id, location} = req.body
 
         const group = await new Group({
             name,
-            interests,
-            admin_id: user_id
+            admin_id: user_id,
+            members,
+            location
         });
         group.save(err => {
             if (err) return res.status(500).json(err);
@@ -17,7 +18,7 @@ module.exports = {
      },
 
      async show(req, res){
-        Group.findById(req.params.goup_id, (err, group) => {
+        Group.findById(req.params.group_id, (err, group) => {
             if (err) return res.status(500).json(err)
             return res.status(200).json(group)
         });
@@ -81,11 +82,12 @@ if(mongoose.Types.ObjectId.isValid(group_id)) {
     }
     },
 
-    async destoy(req, res){
-        Group.findByIdAndRemove(req.params.group_id, (err, user) => {
+    async destroy(req, res){
+        Group.findByIdAndRemove(req.body.group_id, (err, group) => {
             if (err) return res.status(500).send(err);
-            return res.status(200).json("Group successfully deleted!");
+            return res.status(200).json(group);
         });
+        return res.status(200)
     }
 
 }
