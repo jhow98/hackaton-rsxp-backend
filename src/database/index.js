@@ -1,5 +1,4 @@
 import mongoose from 'mongoose';
-
 class Database {
   constructor() {
     this.init();
@@ -15,4 +14,5 @@ class Database {
     );
   }
 }
+
 export default new Database();
