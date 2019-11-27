@@ -5,12 +5,15 @@ module.exports = {
     async store(req, res){
         const { name, interests, user_id } = req.body
 
-        const group = await Group.create({
-            name: name,
+        const group = await new Group({
+            name,
             interests,
             admin_id: user_id
-        })
-        return res.status(201).json(group)
+        });
+        group.save(err => {
+            if (err) return res.status(500).json(err);
+                return res.status(201).json(group)
+});
      },
 
      async show(req, res){
